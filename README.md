@@ -81,13 +81,14 @@ then ask real world questions from the graph database.
 
 You can also integrate the EStruct with your devops pipeline to keep track of your project architecture and changes.
 
-Todo list:
+### Todo list
 
-1. make EStruct plugable/extendable to support various project structures
-2. Generate labels based on user patterns (analyze file name and decide which label to give it)
-3. Add support for require syntax.
-4. Create CLI tool
-5. Publish using NPM
-6. Read configuration from project root directory .estruct.json
-7. Boost performance
-8. Cleaner code
+- [ ] Generate labels based on user patterns (analyze file name and decide which label to give it)
+- [ ] Add support for require syntax.
+- [ ] Create CLI tool
+- [ ] Publish using NPM
+- [ ] Read configuration from project root directory .estruct.json
+- [ ] Boost performance
+- [ ] Cleaner code
+- [ ] make EStruct plugable/extendable to support various project structures
+
