@@ -1,6 +1,7 @@
 # EStruct
 
-estruct traverses javascript projects and maps all the dependencies and relationships to a JSON. the output can be used to build network visualizations of the project and document the architecture.
+EStruct traverses javascript projects and maps all the dependencies and relationships to a JSON. 
+The output can be used to build network visualizations of the project and document the architecture.
 
 ---
 
