@@ -93,5 +93,5 @@ You can also integrate the EStruct with your devops pipeline to keep track of yo
 - [ ] Boost performance
 - [ ] Cleaner code
 - [ ] make EStruct plugable/extendable to support various project structures
-- [ ] use lexer and parsers to support multiple ecmascript versions
+- [ ] use lexer and parsers to support multiple ecmascript versions and retrive more data about the contents of the code.
 
