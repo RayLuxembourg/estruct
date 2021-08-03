@@ -89,9 +89,9 @@ You can also integrate the EStruct with your devops pipeline to keep track of yo
 - [ ] Add support for require syntax.
 - [ ] Create CLI tool
 - [ ] Publish using NPM
-- [ ] Read configuration from project root directory .estruct.json
+- [ ] Read configuration from project root directory .estructrc.json
 - [ ] Boost performance
 - [ ] Cleaner code
 - [ ] make EStruct plugable/extendable to support various project structures
-- [ ] user lexer and parsers to support multiple ecmascript versions
+- [ ] use lexer and parsers to support multiple ecmascript versions
 
