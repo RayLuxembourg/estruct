@@ -83,7 +83,8 @@ You can also integrate the EStruct with your devops pipeline to keep track of yo
 
 ### Todo list
 
-- [x] Parse ES6 and TypeScript
+- [x] Parse ES Modules
+- [ ] Support CommonJS
 - [ ] Generate labels based on user patterns (analyze file name and decide which label to give it)
 - [ ] Add support for require syntax.
 - [ ] Create CLI tool
