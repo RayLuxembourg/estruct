@@ -1,8 +1,36 @@
 # EStruct
-estruct traverses a modern javascript project and maps all its dependencies and relationships and outputs a JSON which is used to build network visualizations of the project.
+
+estruct traverses a modern javascript project and maps all its dependencies and relationships and outputs a JSON which
+is used to build network visualizations of the project.
 
 ---
-Output json structure 
+
+Getting started
+
+```shell
+go get github.com/RayLuxembourg/estruct
+```
+
+```go
+root := "/path/to/project/src"
+labels:= make([]estruct.Label,0) // or create real labels
+p:= estruct.NewConfig(root, `(.(js|jsx))$`,labels)
+relativePath := "./src"
+datasets, fileMap, dependenciesMap := p.Init(relativePath) // the output is the json
+```
+
+Saving output to a json file
+
+```go
+jsonName := "application.json"
+os.Remove(jsonName)
+b, _ := json.Marshal(jsonArr)
+
+ioutil.WriteFile(jsonName, b, 0666)
+```
+
+Output json structure
+
 ```json
 [
   {
@@ -39,23 +67,27 @@ Output json structure
     "name": "app-data",
     "lines": 4,
     "label": ""
-  },
-  ...
+  }
 ]
 ```
 
 EStruct will generate unique id for each mapped file to allow relationship creation using those id's
 
 ### How is this helpful to your organization ?
-Using the output of EStruct, you can visualize your complex large scale JavaScript project
-using tools like neo4j and then ask real world questions from the graph database.
+
+Using the output of EStruct, you can visualize your complex large scale JavaScript project using tools like neo4j and
+then ask real world questions from the graph database.
 ![](https://i.imgur.com/uUzJeCL.png)
 
-You can also integrate the EStruct with your devops pipeline to keep track of your project architecture and changes. 
+You can also integrate the EStruct with your devops pipeline to keep track of your project architecture and changes.
 
 Todo list:
+
 1. make EStruct plugable/extendable to support various project structures
-2. Generate labels besed on user patterns (analyze file name and decide which label to give it)
+2. Generate labels based on user patterns (analyze file name and decide which label to give it)
 3. Add support for require syntax.
 4. Create CLI tool
 5. Publish using NPM
+6. Read configuration from project root directory .estruct.json
+7. Boost performance
+8. Cleaner code
