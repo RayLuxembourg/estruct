@@ -24,7 +24,7 @@ Saving output to a json file
 ```go
 jsonName := "application.json"
 os.Remove(jsonName)
-b, _ := json.Marshal(jsonArr)
+b, _ := json.Marshal(datasets)
 
 ioutil.WriteFile(jsonName, b, 0666)
 ```
