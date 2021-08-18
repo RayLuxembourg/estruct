@@ -1,4 +1,4 @@
-package estruct
+package internal
 
 import (
 	"bytes"
