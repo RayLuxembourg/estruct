@@ -5,31 +5,25 @@ The output can be used to build network visualizations of the project and docume
 
 ---
 
-Getting started
+### Installations
 
 ```shell
-go get github.com/RayLuxembourg/estruct
+go install github.com/RayLuxembourg/estruct@latest
+```
+---
+After installation, you can run estruct from the terminal and by default it will run on your current directory
+
+In order to view list of possible arguments and their default value, use
+```shell
+estruct -h
+```
+---
+### Running estruct with specific arguments
+```shell
+ estruct -p /path/to/code -e "ts|tsx"                  
 ```
 
-```go
-root := "/path/to/project/src"
-labels:= make([]estruct.Label,0) // or create real labels
-p:= estruct.NewConfig(root, `(.(js|jsx))$`,labels)
-relativePath := "./src"
-datasets, fileMap, dependenciesMap := p.Init(relativePath) // the output is the json
-```
-
-Saving output to a json file
-
-```go
-jsonName := "application.json"
-os.Remove(jsonName)
-b, _ := json.Marshal(datasets)
-
-ioutil.WriteFile(jsonName, b, 0666)
-```
-
-Output json structure
+### Output json structure example
 
 ```json
 [
@@ -84,14 +78,13 @@ You can also integrate the EStruct with your devops pipeline to keep track of yo
 ### Todo list
 
 - [x] Parse ES Modules
+- [x] Create CLI tool
+- [ ] Use abstract syntax tree for better code analysis 
+- [ ] Read configuration from project root directory .estructrc.json
 - [ ] Support CommonJS
 - [ ] Generate labels based on user patterns (analyze file name and decide which label to give it)
-- [ ] Add support for require syntax.
-- [ ] Create CLI tool
 - [ ] Publish using NPM
-- [ ] Read configuration from project root directory .estructrc.json
 - [ ] Boost performance
 - [ ] Cleaner code
 - [ ] make EStruct plugable/extendable to support various project structures
-- [ ] use lexer and parsers to support multiple ecmascript versions and retrive more data about the contents of the code.
 

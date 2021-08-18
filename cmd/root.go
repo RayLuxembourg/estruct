@@ -44,17 +44,21 @@ to quickly create a Cobra application.`,
 		path, _ := cmd.Flags().GetString("path")
 		extensions, _ := cmd.Flags().GetString("extensions")
 		name, _ := cmd.Flags().GetString("name")
+		output, _ := cmd.Flags().GetString("output")
 
-
+		regexExtension := fmt.Sprintf(`(.(%s))$`,extensions)
 		labels:= make([]internal.Label,0) // or create real labels
-		p:= internal.NewConfig(path, extensions,labels)
+		p:= internal.NewConfig(path, regexExtension,labels)
 		relativePath := "./src"
+		fmt.Println("Processing...")
 		datasets, _, _ := p.Init(relativePath)
 
 		os.Remove(name)
 		b, _ := json.Marshal(datasets)
 
 		ioutil.WriteFile(name, b, 0666)
+		succMsg:= fmt.Sprintf("Output save in %s/%s",output,name)
+		fmt.Println(succMsg)
 
 	},
 }
@@ -74,7 +78,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "default .estructrc.json path (./estructrc.json)")
 	currentPath,_:=os.Getwd()
 	rootCmd.PersistentFlags().StringP("path", "p", currentPath, "directory to parse")
-	rootCmd.PersistentFlags().StringP("extensions", "e", `(.(js|jsx))$`, "regex to match file extensions to parse")
+	rootCmd.PersistentFlags().StringP("extensions", "e", `js|jsx`, "regex to match file extensions to parse")
 	rootCmd.PersistentFlags().StringP("output", "o", currentPath, "output path for the generated json")
 	rootCmd.PersistentFlags().StringP("name", "n", "structure.json", "output file name")
 
@@ -82,7 +86,6 @@ func init() {
 	viper.BindPFlag("extensions",rootCmd.PersistentFlags().Lookup("extensions"))
 	viper.BindPFlag("output",rootCmd.PersistentFlags().Lookup("output"))
 	viper.BindPFlag("name",rootCmd.PersistentFlags().Lookup("name"))
-
 
 }
 
